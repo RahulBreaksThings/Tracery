@@ -1,6 +1,6 @@
 # Tracery
 
-An open-source, OpenCV + MediaPipe recreation of the [AEScripts Tracery](https://aescripts.com/tracery/) After Effects plugin. Tracery overlays HUD-style markers and connection lines on the most distinctive points of an image, video, or live camera feed — the kind of "sci-fi targeting" graphic you see in movies.
+An open-source, OpenCV + MediaPipe recreation of the [AEScripts Tracery](https://aescripts.com/tracery/) After Effects plugin. Tracery overlays HUD-style markers and connection lines on the most distinctive points of an image, video, or live camera feed - the kind of "sci-fi targeting" graphic you see in movies.
 
 ![Preview](docs/preview.png)
 
@@ -9,13 +9,13 @@ An open-source, OpenCV + MediaPipe recreation of the [AEScripts Tracery](https:/
 ## Features
 
 - **Three input sources**: live webcam, still image, or video file
-- **Automatic feature detection** using Shi-Tomasi corner detection — locks onto fingertips, knuckles, object corners, anywhere the image has a strong corner gradient
+- **Automatic feature detection** using Shi-Tomasi corner detection - locks onto fingertips, knuckles, object corners, anywhere the image has a strong corner gradient
 - **Manual color tracking mode**: left-click any colored region to track every blob of that color (the original Tracery workflow)
 - **Four connection styles**: Sequential, Star, Full graph, and Minimum Spanning Tree (Prim's algorithm)
 - **Five marker styles**: box (with corner brackets), dot, cross, plus, reticle
 - **Dashed connection lines** in HUD blue with optional directional arrows
 - **Yellow coordinate labels** at each tracked point
-- **Hand-gesture activation** (camera mode): the effect stays dormant until you show a fully open, splayed hand to the camera — then it latches on for the rest of the session
+- **Hand-gesture activation** (camera mode): the effect stays dormant until you show a fully open, splayed hand to the camera - then it latches on for the rest of the session
 - **Live MediaPipe hand skeleton overlay** once activated
 
 ---
@@ -96,12 +96,12 @@ In manual color mode: **left-click** any colored object to start tracking that c
 
 | Component | Algorithm |
 |---|---|
-| Feature detection (auto mode) | `cv2.goodFeaturesToTrack` — Shi-Tomasi corner detection. Returns points where the image gradient is strong in two directions. |
+| Feature detection (auto mode) | `cv2.goodFeaturesToTrack` - Shi-Tomasi corner detection. Returns points where the image gradient is strong in two directions. |
 | Color tracking (manual mode) | HSV color masking with morphological cleanup, then external contour detection and centroid computation via image moments. |
-| Connection — Sequential | Chain: `p0 → p1 → p2 → ...` |
-| Connection — Star | All points connect to `p0`. |
-| Connection — Full | Complete graph (every pair). |
-| Connection — MST | Minimum spanning tree via Prim's algorithm. |
+| Connection - Sequential | Chain: `p0 → p1 → p2 → ...` |
+| Connection - Star | All points connect to `p0`. |
+| Connection - Full | Complete graph (every pair). |
+| Connection - MST | Minimum spanning tree via Prim's algorithm. |
 | Hand detection | MediaPipe Hand Landmarker (21 keypoints per hand). "Open hand" = all four non-thumb fingers extended **and** fingertip spacing ≥ 1.35× knuckle spacing. |
 | Edge overlay | Canny edge detector, tinted and composited at low intensity. |
 
@@ -173,4 +173,4 @@ detector = HandDetector(spread_threshold=1.5)   # stricter open-hand requirement
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
